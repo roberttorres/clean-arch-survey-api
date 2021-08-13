@@ -1,6 +1,5 @@
 import { Controller, HttpRequest  } from '../../presentation/protocols'
 import { Request, Response } from 'express'
-import { runInNewContext } from 'vm'
 
 export const adaptRoute = (controller: Controller) => {
   return async (req: Request, res: Response) => {

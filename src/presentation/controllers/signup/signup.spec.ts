@@ -155,7 +155,7 @@ describe('SignUp Controller', () => {
     const { sut, emailValidatorStub } = makeSut()
     const isValidSpy = jest.spyOn(emailValidatorStub, 'isValid').mockReturnValueOnce(false)
     await sut.handle(makeFakeRequest())
-    expect(isValidSpy).toHaveBeenCalledWith('any_email@mail.com')
+    expect(isValidSpy).toHaveBeenCalledWith('valid_email@mail.com')
     
   })  
   
@@ -202,9 +202,9 @@ describe('SignUp Controller', () => {
   
     await sut.handle(makeFakeRequest())
     expect(addSpy).toHaveBeenCalledWith({
-      name: 'any_name',
-      email: 'any_email@mail.com',
-      password: 'any_password',
+      name: 'valid_name',
+      email: 'valid_email@mail.com',
+      password: 'valid_password',
     })
   }) 
   

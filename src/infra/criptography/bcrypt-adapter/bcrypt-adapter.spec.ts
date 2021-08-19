@@ -1,4 +1,3 @@
-import { rejects } from 'assert/strict';
 import bcrypt from 'bcrypt';
 import { BcryptAdapter } from './bcrypt-adapter'
 

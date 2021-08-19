@@ -1,5 +1,5 @@
 import { AccountModel } from "../add-account/db-add-account-protocols"
-import { LoadAccountByEmailRepository } from '../../protocols/load-account-by-email-repository'
+import { LoadAccountByEmailRepository } from '../../protocols/db/load-account-by-email-repository'
 import { DbAuthentication } from './db-authentication'
 import { HttpRequest } from "../../../presentation/protocols"
 import { AuthenticationModel } from "../../../domain/usecases/authentication"
@@ -55,7 +55,7 @@ describe('DbAuthentication UseCase', () => {
       new Promise((resolve, reject) => reject(new Error()))
     )
     const promise = sut.auth(makeFakeAuthentication())
-    await expect(promise).rejects.toThrow()
+    await expect(promise).rejects.toThrow() 
 
   })
 })

@@ -23,7 +23,6 @@ export class SignUpController implements Controller {
         password,
       })
 
-    account.name = "teste"  
     return ok(account)
       
 

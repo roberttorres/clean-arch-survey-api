@@ -6,7 +6,7 @@ import { AuthenticationModel } from '../../../domain/usecases/authentication'
 
 const makeAuthentication = (): Authentication => {
   class AuthenticationStub implements Authentication {
-    async auth (eauthentication: AuthenticationModel): Promise<string> {
+    async auth (authentication: AuthenticationModel): Promise<string> {
       return new Promise(resolve => resolve('any_token'))
     }
   }
@@ -47,8 +47,7 @@ const makeFakeRequest = (): HttpRequest => ({
 })
 
 
-describe('Login Controller', () => {
-     
+describe('Login Controller', () => {     
     test('Should call Authentication with correct values', async () => {  
       const { sut, authenticationStub } = makeSut()
       const authSpy = jest.spyOn(authenticationStub, 'auth')

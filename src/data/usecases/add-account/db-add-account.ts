@@ -8,7 +8,7 @@ export class DbAddAccount implements AddAccount {
   constructor (
     private readonly hasher: Hasher,
     private readonly addAccountRepository: AddAccountRepository,
-    private readonly loadAccountByEmailRepository: LoadAccountByEmailRepository,) {
+    private readonly loadAccountByEmailRepository: LoadAccountByEmailRepository) {
     /*this.hasher = hasher
     this.addAccountRepository = addAccountRepository */
   }

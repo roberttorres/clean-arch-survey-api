@@ -3,7 +3,6 @@ import { EmailInUseError, MissingParamError, ServerError } from '../../errors'
 import {  AccountModel, AddAccount, AddAccountModel, Validation, Authentication, AuthenticationModel } from './signup-controller-protocols'
 import { HttpRequest } from '../../protocols'
 import { ok, serverError, badRequest, forbidden } from '../../helpers/http/http-helper'
-import { resolve } from 'path/posix'
  
 
 const makeAddAccount = (): AddAccount => {

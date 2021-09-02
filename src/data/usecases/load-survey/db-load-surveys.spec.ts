@@ -24,7 +24,7 @@ const makeFakeSurveys = (): SurveyModel[] => {
 
 interface SutTypes {
   sut: DbLoadSurveys,
-  loadSurveyRepositoryStub: LoadSurveysRepository
+  loadSurveysRepositoryStub: LoadSurveysRepository
 }
 
 const makeLoadSurveysRepository = (): LoadSurveysRepository => {
@@ -37,19 +37,19 @@ const makeLoadSurveysRepository = (): LoadSurveysRepository => {
 }
 
 const makeSut = (): SutTypes => {
-  const loadSurveyRepositoryStub = makeLoadSurveysRepository()
-  const sut = new DbLoadSurveys(loadSurveyRepositoryStub)
+  const loadSurveysRepositoryStub = makeLoadSurveysRepository()
+  const sut = new DbLoadSurveys(loadSurveysRepositoryStub)
 
   return {
     sut,
-    loadSurveyRepositoryStub
+    loadSurveysRepositoryStub
   }
 } 
 
 describe('LoadSurveys', () => {
   test('Should call LoadSurveysRepository', async () => {
-    const { sut, loadSurveyRepositoryStub } = makeSut()
-    const loadAllSpy = jest.spyOn(loadSurveyRepositoryStub, 'loadAll')
+    const { sut, loadSurveysRepositoryStub } = makeSut()
+    const loadAllSpy = jest.spyOn(loadSurveysRepositoryStub, 'loadAll')
     await sut.load()
     expect(loadAllSpy).toHaveBeenCalled()
   })
@@ -59,4 +59,11 @@ describe('LoadSurveys', () => {
     const surveys = await sut.load()
     expect(surveys).toEqual(makeFakeSurveys())
   })
+
+  test('Should throw if LoadSurveysRepository throws', async () => {
+    const { sut, loadSurveysRepositoryStub } = makeSut()
+    jest.spyOn(loadSurveysRepositoryStub, 'loadAll').mockReturnValueOnce(new Promise((resolve, reject) => reject(new Error())))      
+    const promise = sut.load()
+    await expect(promise).rejects.toThrow()
+})
 })  

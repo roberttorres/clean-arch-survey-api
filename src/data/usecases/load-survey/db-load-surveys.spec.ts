@@ -1,6 +1,5 @@
-import { LoadSurveysRepository }  from '@/data/protocols/db/survey/load-surveys-repository'
-import { SurveyModel }  from '@/domain/models/survey'
 import { DbLoadSurveys } from './db-load-surveys'
+import { LoadSurveysRepository, SurveyModel }  from './db-load-surveys-protocols'
 import MockDate from 'mockdate'
 
 const makeFakeSurveys = (): SurveyModel[] => {
@@ -74,5 +73,5 @@ describe('LoadSurveys', () => {
     jest.spyOn(loadSurveysRepositoryStub, 'loadAll').mockReturnValueOnce(new Promise((resolve, reject) => reject(new Error())))      
     const promise = sut.load()
     await expect(promise).rejects.toThrow()
-})
+  })
 })  

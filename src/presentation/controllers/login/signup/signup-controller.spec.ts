@@ -1,34 +1,10 @@
 import { SignUpController } from './signup-controller'
 import { EmailInUseError, MissingParamError, ServerError } from '@/presentation/errors'
-import {  AccountModel, AddAccount, AddAccountParams, Validation, Authentication, AuthenticationParams } from './signup-controller-protocols'
+import {  AccountModel, AddAccount, AddAccountParams, Validation, Authentication } from './signup-controller-protocols'
 import { HttpRequest } from '@/presentation/protocols'
 import { ok, serverError, badRequest, forbidden } from '@/presentation/helpers/http/http-helper'
- 
-
-const makeAddAccount = (): AddAccount => {
-  class AddAccountStub implements AddAccount {
-    async add (account: AddAccountParams): Promise<AccountModel> {     
-      return new Promise(resolve => resolve(makeFakeAccount()))
-    }
-  }  
-    return new AddAccountStub()
-}   
-
-const makeValidation = (): Validation => {
-  class ValidationStub implements Validation {
-    validate (input: any): Error {
-      return null
-    }
-  }  
-      return new ValidationStub()    
-}    
-
-const makeFakeAccount = (): AccountModel => ({
-    id: 'valid_id',
-    name: 'valid_name',
-    email: 'valid_email@mail.com',
-    password: 'valid_password',
-})
+import { mockAccountModel } from '@/domain/test'
+import { mockAddAccount, mockAuthentication, mockValidation } from '@/presentation/test'
 
 const makeFakeRequest = (): HttpRequest => ({
   body: {
@@ -39,15 +15,6 @@ const makeFakeRequest = (): HttpRequest => ({
   } 
 })
 
-const makeAuthentication = (): Authentication => {
-  class AuthenticationStub implements Authentication {
-    async auth (authentication: AuthenticationParams): Promise<string> {
-      return new Promise(resolve => resolve('any_token'))
-    }
-  }
-  return new AuthenticationStub()
-}
-
 type SutTypes = {
   sut: SignUpController  
   addAccountStub: AddAccount
@@ -55,13 +22,11 @@ type SutTypes = {
   authenticationStub: Authentication
 }
 
-
-
 const makeSut = (): SutTypes => {
     
-  const authenticationStub = makeAuthentication()
-  const addAccountStub = makeAddAccount()
-  const validationStub = makeValidation()
+  const authenticationStub = mockAuthentication()
+  const addAccountStub = mockAddAccount()
+  const validationStub = mockValidation()
   const sut = new SignUpController( addAccountStub, validationStub, authenticationStub)
   return {
     sut,    
@@ -123,7 +88,7 @@ describe('SignUp Controller', () => {
     const httpResponse = await sut.handle(makeFakeRequest())    
     expect(httpResponse).toEqual(ok({ accessToken: 'any_token' }))
     /*expect(httpResponse.statusCode).toBe(200)
-    expect(httpResponse.body).toEqual(makeFakeAccount()) */
+    expect(httpResponse.body).toEqual(mockAccountModel()) */
   })
 
   test('Should call Validation with correct value', async () => {

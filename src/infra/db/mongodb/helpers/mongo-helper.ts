@@ -1,5 +1,4 @@
 import { MongoClient, Collection } from 'mongodb'
-import { threadId } from 'worker_threads'
 
 export const MongoHelper = {
   client: null as MongoClient,

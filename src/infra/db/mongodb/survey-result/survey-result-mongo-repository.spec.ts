@@ -8,6 +8,10 @@ let surveyCollection: Collection
 let surveyResultCollection: Collection
 let accountCollection: Collection
 
+const makeSut = (): SurveyResultMongoRepository => {
+  return new SurveyResultMongoRepository()
+}  
+
 const makeAccount = async(): Promise<AccountModel> => {
   const res = await accountCollection.insertOne({
     name: 'any_name',
@@ -29,10 +33,6 @@ const makeSurvey = async(): Promise<SurveyModel> => {
       date: new Date()
   })
   return res.ops[0]
-}
-
-const makeSut = (): SurveyResultMongoRepository => {
-  return new SurveyResultMongoRepository()
 }
 
 describe('Survey Mongo Repository', () => {
@@ -65,8 +65,6 @@ describe('Survey Mongo Repository', () => {
         date: new Date()
       })
       expect(surveyResult).toBeTruthy()
-      expect(surveyResult.id).toBeTruthy()
-      expect(surveyResult.answer).toBe(survey.answers[0].answer)
     })    
     
       test('Should update survey result if its not new', async () => {   

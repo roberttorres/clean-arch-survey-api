@@ -4,6 +4,7 @@ import { SaveSurveyResultController } from './save-survey-result-controller'
 import { HttpRequest, LoadSurveyById, SurveyModel, SaveSurveyResult, SaveSurveyResultParams, SurveyResultModel } from './save-survey-result-controller-protocols'
 import MockDate from 'mockdate'
 import { mockLoadSurveyById, mockSaveSurveyResult } from '@/presentation/test'
+import { mockSurveyResultModel } from '@/domain/test'
 
 const makeFakeRequest = (): HttpRequest => ({
   params: {
@@ -13,26 +14,7 @@ const makeFakeRequest = (): HttpRequest => ({
     answer: 'any_answer'
   },
   accountId: 'any_account_id'
-  })
-
-const mockSurveyModel = (): SurveyModel => ({  
-    id: 'any_id',
-    question: 'any_question',
-    answers: [{
-      image: 'any_image',
-      answer: 'any_answer',
-    }],
-      date: new Date()
-  })
-
-  const mockSurveyResultModel = (): SurveyResultModel => ({  
-    id: 'valid_id',
-    surveyId: 'valid_survey_id',
-    accountId: 'valid_account_id',
-    date: new Date(),
-    answer: 'valid_answer'
-  })
-
+ })
 
 type SutTypes = {
   sut: SaveSurveyResultController

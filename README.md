@@ -1,6 +1,6 @@
 # clean-arch-survey-api
 <p align="center">
-    <img src="https://github.com/roberttorres/clean-arch-survey-api/blob/master/src/images/logo_api.png"> 
+    <img src="https://github.com/roberttorres/clean-arch-survey-api/blob/master/images/logo_api.png"> 
 </a>
 </p>
 

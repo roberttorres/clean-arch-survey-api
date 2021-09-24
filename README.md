@@ -11,6 +11,15 @@ Clean Architecture para fazer a distribuição de responsabilidades em camadas, 
 aplicando Design Patterns para resolver alguns problemas comuns.
 <p>
 
+<h2> APIs construídas no treinamento</h2>
+
+1. <a href="https://github.com/roberttorres/clean-arch-survey-api/blob/master/requirements/signup.md">Cadastro</a>
+2. <a href="https://github.com/roberttorres/clean-arch-survey-api/blob/master/requirements/login.md">Login</a>
+3. <a href="https://github.com/roberttorres/clean-arch-survey-api/blob/master/requirements/add-survey.md">Criar enquete</a>
+4. <a href="https://github.com/roberttorres/clean-arch-survey-api/blob/master/requirements/load-surveys.md">Listar enquetes</a>
+5. <a href="https://github.com/roberttorres/clean-arch-survey-api/blob/master/requirements/save-survey-result.md">Responder enquete</a>
+6. <a href="https://github.com/roberttorres/clean-arch-survey-api/blob/master/requirements/load-survey-result.md">Resultado da enquete</a>
+ 
 <h2> Princípios Utilizados </h2>
 
 <ul>

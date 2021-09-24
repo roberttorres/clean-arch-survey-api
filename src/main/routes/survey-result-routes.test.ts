@@ -50,7 +50,15 @@ describe('Survey Routes', () => {
           answer: 'any_answer'
         })          
         .expect(403)      
-    })       
+    })   
+    
+    describe('GET /surveys:/surveyId/results', () => {
+      test('Should return 403 on load survey result without accessToken', async () => {      
+        await request(app)
+          .get('/api/surveys/any_id/results')                   
+          .expect(403)      
+      })   
+    })
     
     test('Should return 200 on save survey success with access Token', async () => {    
       const accessToken = await makeAccessToken() 

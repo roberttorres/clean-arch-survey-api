@@ -239,7 +239,7 @@ aplicando Design Patterns para resolver alguns problemas comuns.
     </li> 
 </ul>   
 
-<h2> Features de Testes </h2
+<h2> Features de Testes </h2>
 
 <ul>
     <li>

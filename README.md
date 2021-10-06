@@ -11,7 +11,7 @@ Clean Architecture para fazer a distribuição de responsabilidades em camadas, 
 aplicando Design Patterns para resolver alguns problemas comuns.
 <p>
 
-<h2> APIs construídas no treinamento</h2>
+<h2> APIs desenvolvidas no projeto</h2>
 
 1. <a href="https://github.com/roberttorres/clean-arch-survey-api/blob/master/requirements/signup.md">Cadastro</a>
 2. <a href="https://github.com/roberttorres/clean-arch-survey-api/blob/master/requirements/login.md">Login</a>
